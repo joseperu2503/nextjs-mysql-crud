@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .input {
+    @apply border rounded-md py-1 px-2 text-slate-800 outline-none focus:border-blue-500 shadow-sm
+  }
+}
