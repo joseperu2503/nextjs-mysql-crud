@@ -4,6 +4,7 @@ import Button from '../components/Button';
 import Modal from '../components/Modal';
 import ProductForm from '../components/ProductForm';
 import { Icon } from '@iconify/react';
+import AppLayout from '../components/AppLayout';
 
 const HomePage = () => {
   const [productId, setProductId] = useState(null);
@@ -19,6 +20,9 @@ const HomePage = () => {
     .then((response) => {
       console.log(response);
       setProducts(response.data);
+    })
+    .catch(error => {
+      console.log(error)
     });
   };
 
@@ -47,9 +51,8 @@ const HomePage = () => {
   return (
     <div>
       <Button onClick={newProduct}>New Product</Button>
-
-      <table className="w-full text-sm text-left text-gray-500">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+      <table className="w-full text-sm text-left text-gray-500 mt-8">
+        <thead className="text-xs text-gray-700 uppercase bg-blue-100">
           <tr>
             <th scope="col" className="py-3 px-6">
               Name
@@ -91,4 +94,7 @@ const HomePage = () => {
   );
 };
 
+HomePage.PageLayout = AppLayout
+
 export default HomePage;
+

@@ -32,21 +32,19 @@ const ProductForm = ({productId, close, getProducts}) => {
   }
 
   const onSubmit = async () => {
-    if(productId){
-      await axios.put(`/api/products/${productId}`,form)
-      .then(response => {
-        console.log(response)
-        close()
-        getProducts()
-      })
-    }else{
-      await axios.post(`/api/products`,form)
-      .then(response => {
-        console.log(response)
-        close()
-        getProducts()
-      })
+
+    try {
+      if(productId){
+        await axios.put(`/api/products/${productId}`,form)
+      }else{
+        await axios.post(`/api/products`,form)
+      }
+      close()
+      getProducts()
+    } catch (error) {
+      console.log(error)
     }
+
   }
 
   return (
